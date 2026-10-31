@@ -38,7 +38,12 @@ export default function Header() {
           <ul className="primary-nav__list">
             {siteConfig.navigation.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} end={item.end} className="primary-nav__link" onClick={closeMenu}>
+                <NavLink
+                  to={item.to}
+                  end={item.end}
+                  className={`primary-nav__link ${item.cta ? 'primary-nav__link--cta' : ''}`}
+                  onClick={closeMenu}
+                >
                   {item.label}
                 </NavLink>
               </li>

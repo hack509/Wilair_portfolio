@@ -25,6 +25,9 @@ export const profileData = {
 
   phone: '+509 35 35 3531',
   phoneHref: 'tel:+50935353531',
+  // WhatsApp : numéro au format international sans « + » ni espaces (même numéro que le téléphone).
+  whatsappNumber: '50935353531',
+  whatsappMessage: 'Bonjour Wilair, je vous contacte depuis votre portfolio.',
   // ⚠ Adresse reprise telle que fournie (« gmai.com ») — à vérifier.
   email: 'Wilwilairjoseph@gmai.com',
 

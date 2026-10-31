@@ -4,6 +4,7 @@ import AsyncContent from '../components/common/AsyncContent'
 import Button from '../components/common/Button'
 import PageHeader from '../components/common/PageHeader'
 import SocialLinks from '../components/common/SocialLinks'
+import WhatsAppButton from '../components/common/WhatsAppButton'
 import ContactForm from '../components/forms/ContactForm'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useProfile } from '../hooks/useProfile'
@@ -57,6 +58,7 @@ export default function Contact() {
                   <Button href={toMailHref(profile.email, initialSubject)} variant="outline" icon={Mail} iconPosition="start">
                     Envoyer un e-mail
                   </Button>
+                  <WhatsAppButton />
                 </div>
 
                 <SocialLinks links={profile.socialLinks} />

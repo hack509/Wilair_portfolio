@@ -12,6 +12,6 @@ export const siteConfig = {
     { label: 'Réalisations', to: ROUTES.portfolio },
     { label: 'Parcours', to: ROUTES.career },
     { label: 'Formation', to: ROUTES.skills },
-    { label: 'Contact', to: ROUTES.contact },
+    { label: 'Contact', to: ROUTES.contact, cta: true },
   ],
 }

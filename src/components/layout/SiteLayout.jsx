@@ -1,6 +1,8 @@
 import { Suspense, useEffect, useRef } from 'react'
 import { Outlet, ScrollRestoration, useLocation } from 'react-router'
+import ChatbotWidget from '../chatbot/ChatbotWidget'
 import { Loader } from '../common/StateMessages'
+import WhatsAppButton from '../common/WhatsAppButton'
 import Header from '../navigation/Header'
 import Footer from './Footer'
 
@@ -15,6 +17,8 @@ export default function SiteLayout() {
       firstRender.current = false
       return
     }
+    // Sauf si le visiteur utilise l'assistant : il garde le focus dans la conversation.
+    if (document.activeElement?.closest('.chatbot')) return
     mainRef.current?.focus({ preventScroll: true })
   }, [pathname])
 
@@ -30,6 +34,10 @@ export default function SiteLayout() {
         </Suspense>
       </main>
       <Footer />
+      <div className="floating-actions">
+        <ChatbotWidget />
+        <WhatsAppButton floating />
+      </div>
       <ScrollRestoration />
     </>
   )

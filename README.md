@@ -61,3 +61,10 @@ Le formulaire de contact ouvre pour l'instant la messagerie du visiteur avec le 
 
 Commande `npm run build`, dossier publié `dist`. Les redirections nécessaires sont configurées
 pour Netlify (`public/_redirects`) et Vercel (`vercel.json`).
+
+## WhatsApp et assistant de navigation
+
+- **WhatsApp** : bouton flottant sur toutes les pages et bouton sur la page Contact.
+  Numéro et message prérempli : `whatsappNumber` et `whatsappMessage` dans `src/data/profileData.js`.
+- **Assistant** (bulle violette) : oriente le visiteur vers la bonne page à partir de mots-clés.
+  Il fonctionne sans serveur ni IA. Pour ajouter un sujet ou des mots-clés : `src/data/chatbotData.js`.

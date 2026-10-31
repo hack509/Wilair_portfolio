@@ -1,4 +1,4 @@
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, MapPin } from 'lucide-react'
 import AsyncContent from '../components/common/AsyncContent'
 import Button from '../components/common/Button'
 import SmartImage from '../components/common/SmartImage'
@@ -16,8 +16,17 @@ export default function Home() {
         <section className="hero">
           <div className="container hero__grid">
             <div className="hero__text">
-              <h1 className="hero__title">{profile.fullName}</h1>
-              <p className="hero__specialties">{profile.specialties.join(' | ')}</p>
+              <p className="badge">
+                <MapPin size={14} aria-hidden="true" /> Basé aux {profile.location}
+              </p>
+              <h1 className="hero__title">
+                {profile.firstName} <span className="hero__accent">{profile.lastName}</span>
+              </h1>
+              <ul className="hero__specialties" aria-label="Spécialités">
+                {profile.specialties.map((specialty) => (
+                  <li key={specialty}>{specialty}</li>
+                ))}
+              </ul>
               <p className="hero__intro">{profile.shortIntro}</p>
               <div className="actions">
                 <Button to={ROUTES.portfolio} icon={ArrowRight}>
@@ -28,13 +37,15 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <SmartImage
-              src={profile.heroImage?.url}
-              alt={profile.heroImage?.alt ?? 'Photographie principale'}
-              placeholderLabel="Photographie principale"
-              ratio="4 / 5"
-              priority
-            />
+            <div className="hero__media">
+              <SmartImage
+                src={profile.heroImage?.url}
+                alt={profile.heroImage?.alt ?? 'Photographie principale'}
+                placeholderLabel="Photographie principale"
+                ratio="4 / 5"
+                priority
+              />
+            </div>
           </div>
         </section>
       )}
