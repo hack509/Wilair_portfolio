@@ -18,7 +18,7 @@ export default function Portfolio() {
 
   usePageMeta({
     title: activeCategory ? `${activeCategory.label} — Réalisations` : 'Réalisations',
-    description: 'Portraits, événements, reportages, productions audiovisuelles et publicitaires.',
+    description: 'Portraits, événements, sport, reportages, productions audiovisuelles, annonces mortuaires et publicitaires.',
   })
 
   const selectCategory = (slug) => {

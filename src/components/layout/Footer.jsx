@@ -54,28 +54,33 @@ export default function Footer() {
           </nav>
 
           {profile && (
-            <div>
-              <p className="site-footer__heading">Contact</p>
-              <ul className="site-footer__list">
-                <li>
-                  <a href={profile.phoneHref} className="site-footer__contact">
-                    <Phone size={16} aria-hidden="true" /> {profile.phone}
-                  </a>
-                </li>
-                <li>
-                  <a href={toMailHref(profile.email)} className="site-footer__contact">
-                    <Mail size={16} aria-hidden="true" /> {profile.email}
-                  </a>
-                </li>
-                {whatsappHref && (
+            <div className="site-footer__contact-section">
+              <div>
+                <p className="site-footer__heading">Contact</p>
+                <ul className="site-footer__list">
                   <li>
-                    <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="site-footer__contact">
-                      <SocialIcon platform="whatsapp" size={16} /> WhatsApp
+                    <a href={profile.phoneHref} className="site-footer__contact">
+                      <Phone size={16} aria-hidden="true" /> {profile.phone}
                     </a>
                   </li>
-                )}
-              </ul>
-              <SocialLinks links={profile.socialLinks} />
+                  <li>
+                    <a href={toMailHref(profile.email)} className="site-footer__contact">
+                      <Mail size={16} aria-hidden="true" /> {profile.email}
+                    </a>
+                  </li>
+                  {whatsappHref && (
+                    <li>
+                      <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="site-footer__contact">
+                        <SocialIcon platform="whatsapp" size={16} /> WhatsApp
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+              <div>
+                <p className="site-footer__heading">Réseaux sociaux</p>
+                <SocialLinks links={profile.socialLinks} />
+              </div>
             </div>
           )}
         </div>

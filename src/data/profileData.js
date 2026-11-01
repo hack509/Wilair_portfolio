@@ -31,12 +31,16 @@ export const profileData = {
   // ⚠ Adresse reprise telle que fournie (« gmai.com ») — à vérifier.
   email: 'Wilwilairjoseph@gmai.com',
 
-  // ⚠ URL exacte du profil non fournie : lien de recherche Facebook en attendant.
   socialLinks: [
     {
       platform: 'facebook',
       label: 'Facebook — Wilair Joseph',
-      url: 'https://www.facebook.com/search/top?q=Wilair%20Joseph',
+      url: 'https://www.facebook.com/share/19uQ6pyPpM/',
+    },
+    {
+      platform: 'instagram',
+      label: 'Instagram — Wilair Joseph',
+      url: 'https://www.instagram.com/jal_la6?xtok=MTNxaDQxaXA5ZXJuaQ%3D%3D&utm_source=qr',
     },
   ],
 

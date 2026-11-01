@@ -616,10 +616,39 @@ textarea {
 }
 
 .site-footer__contact {
-  display: inline-flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  align-items: start;
   gap: 0.55rem;
   overflow-wrap: anywhere;
+}
+
+.site-footer__contact-section {
+  display: grid;
+  align-content: start;
+  gap: 1.5rem;
+}
+
+.site-footer__contact-section .site-footer__list {
+  margin-bottom: 0;
+}
+
+.site-footer .social-links {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.site-footer .social-links__link {
+  display: grid;
+  grid-template-columns: 1rem minmax(0, 1fr);
+  align-items: start;
+  gap: 0.55rem;
+  overflow-wrap: anywhere;
+}
+
+.site-footer .social-links__link svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .site-footer__bottom {
