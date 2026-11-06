@@ -1,8 +1,10 @@
-import { Camera, Video } from 'lucide-react'
+import { Camera, Mic, Video } from 'lucide-react'
 
-// Emplacement clairement identifié, en attendant la photo ou la vidéo du propriétaire.
+const ICONS = { image: Camera, video: Video, audio: Mic }
+
+// Emplacement clairement identifié, en attendant le média du propriétaire.
 export default function MediaPlaceholder({ label = 'Photo à venir', type = 'image', ratio = '4 / 3', className = '' }) {
-  const Icon = type === 'video' ? Video : Camera
+  const Icon = ICONS[type] ?? Camera
   return (
     <div className={`placeholder ${className}`} style={{ aspectRatio: ratio }} role="img" aria-label={`Emplacement réservé : ${label}`}>
       <Icon aria-hidden="true" strokeWidth={1.25} />

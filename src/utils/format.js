@@ -26,6 +26,27 @@ export function formatPeriod(start, end) {
 
 export const padNumber = (value) => String(value).padStart(2, '0')
 
+const dateTimeFormatter = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'medium', timeStyle: 'short' })
+
+export const formatDateTime = (iso) => dateTimeFormatter.format(new Date(iso))
+
+// « Portraits d'atelier » → « portraits-d-atelier »
+export function toSlug(text) {
+  return text
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+// 125 → "2:05"
+export function formatDuration(seconds) {
+  if (!Number.isFinite(seconds) || seconds <= 0) return ''
+  const rounded = Math.round(seconds)
+  return `${Math.floor(rounded / 60)}:${padNumber(rounded % 60)}`
+}
+
 // Découpe un texte en paragraphes (séparés par une ligne vide).
 export function toParagraphs(text) {
   if (Array.isArray(text)) return text
