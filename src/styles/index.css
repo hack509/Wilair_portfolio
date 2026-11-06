@@ -1184,6 +1184,28 @@ textarea {
   color: var(--ink);
 }
 
+/* --- Audio -------------------------------------------------------------- */
+.audio-card {
+  display: grid;
+  gap: 0.6rem;
+  height: 100%;
+  align-content: start;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.audio-card__title {
+  font-size: 1.6rem;
+}
+
+.audio-card__player {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
 /* --- Parcours ------------------------------------------------------------ */
 .timeline {
   position: relative;

@@ -1,18 +1,19 @@
 import { Send } from 'lucide-react'
 import { useRef, useState } from 'react'
+import { isSupabaseConfigured } from '../../lib/supabaseClient'
 import { sendContactMessage } from '../../services/contactService'
 import { getErrorMessage } from '../../utils/errors'
 import { CONTACT_LIMITS, validateContactMessage } from '../../utils/validation'
 import Button from '../common/Button'
 import FormField from './FormField'
 
-const emptyValues = (subject = '') => ({ name: '', email: '', subject, message: '' })
+const emptyValues = (subject = '') => ({ name: '', email: '', subject, message: '', website: '' })
 
 export default function ContactForm({ recipientEmail, initialSubject = '' }) {
   const formRef = useRef(null)
   const [values, setValues] = useState(() => emptyValues(initialSubject))
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle | sent | error
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const [submitError, setSubmitError] = useState('')
 
   const onChange = (event) => {
@@ -33,7 +34,9 @@ export default function ContactForm({ recipientEmail, initialSubject = '' }) {
     }
 
     try {
+      setStatus('sending')
       await sendContactMessage(values, recipientEmail)
+      setValues(emptyValues())
       setStatus('sent')
     } catch (error) {
       if (error.code === 'VALIDATION') setErrors(error.cause)
@@ -51,6 +54,12 @@ export default function ContactForm({ recipientEmail, initialSubject = '' }) {
       <FormField id="subject" label="Objet" required value={values.subject} onChange={onChange} error={errors.subject} maxLength={CONTACT_LIMITS.subject.max} />
       <FormField id="message" as="textarea" label="Message" rows={6} required value={values.message} onChange={onChange} error={errors.message} maxLength={CONTACT_LIMITS.message.max} />
 
+      {/* Champ piège anti-spam : invisible pour les visiteurs, seul un robot le remplit. */}
+      <div className="visually-hidden" aria-hidden="true">
+        <label htmlFor="website">Ne pas remplir ce champ</label>
+        <input id="website" name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={onChange} />
+      </div>
+
       {status === 'error' && submitError && (
         <p className="form__alert" role="alert">
           {submitError}
@@ -58,14 +67,21 @@ export default function ContactForm({ recipientEmail, initialSubject = '' }) {
       )}
       {status === 'sent' && (
         <p className="form__success" role="status">
-          Votre messagerie s’est ouverte avec le message prérempli : il ne reste qu’à l’envoyer.
+          {isSupabaseConfigured
+            ? 'Merci, votre message a bien été envoyé.'
+            : 'Votre messagerie s’est ouverte avec le message prérempli : il ne reste qu’à l’envoyer.'}
         </p>
       )}
 
       <div className="form__footer">
-        <p className="form__note">Tous les champs sont obligatoires. L’envoi ouvre votre messagerie.</p>
-        <Button type="submit" icon={Send}>
-          Envoyer le message
+        <p className="form__note">
+          Tous les champs sont obligatoires.{' '}
+          {isSupabaseConfigured
+            ? 'Vos coordonnées servent uniquement à répondre à votre demande.'
+            : 'L’envoi ouvre votre messagerie.'}
+        </p>
+        <Button type="submit" icon={Send} disabled={status === 'sending'}>
+          {status === 'sending' ? 'Envoi…' : 'Envoyer le message'}
         </Button>
       </div>
     </form>

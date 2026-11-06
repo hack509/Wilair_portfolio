@@ -10,6 +10,7 @@ export const siteConfig = {
     { label: 'À propos', to: ROUTES.about },
     { label: 'Services', to: ROUTES.services },
     { label: 'Réalisations', to: ROUTES.portfolio },
+    { label: 'Audio', to: ROUTES.audio },
     { label: 'Parcours', to: ROUTES.career },
     { label: 'Formation', to: ROUTES.skills },
     { label: 'Contact', to: ROUTES.contact, cta: true },

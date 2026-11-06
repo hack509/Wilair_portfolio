@@ -20,6 +20,7 @@ export const chatbotIntents = [
   { id: 'publicite', label: 'Publicité', to: `${ROUTES.services}#publicite-communication`, answer: 'Voici le service Publicité et communication : spots, voix off, animation.', keywords: ['publicite', 'pub', 'spot', 'voix', 'off', 'animation', 'animateur', 'communication', 'presentateur'] },
   { id: 'video', label: 'Vidéographie', to: `${ROUTES.services}#videographie`, answer: 'Voici le service Vidéographie : captation, production, montage.', keywords: ['video', 'videaste', 'videographie', 'montage', 'captation', 'film', 'tournage'] },
   { id: 'realisations', label: 'Réalisations', to: ROUTES.portfolio, answer: 'Voici les réalisations.', keywords: ['realisation', 'realisations', 'portfolio', 'travail', 'travaux', 'galerie', 'projet', 'projets'] },
+  { id: 'audio', label: 'Audio', to: ROUTES.audio, answer: 'Voici les audios à écouter.', keywords: ['audio', 'audios', 'ecouter', 'son', 'sons', 'podcast', 'emission', 'emissions', 'enregistrement'] },
   { id: 'parcours', label: 'Parcours', to: ROUTES.career, answer: 'Voici le parcours professionnel.', keywords: ['parcours', 'experience', 'experiences', 'carriere', 'radio', 'tele', 'zoom', 'storm', 'media6haiti', 'collaboration'] },
   { id: 'formation', label: 'Formation', to: ROUTES.skills, answer: 'Voici la formation et les compétences.', keywords: ['formation', 'etude', 'etudes', 'diplome', 'competence', 'competences', 'logiciel', 'outil', 'langue', 'langues', 'edseg', 'droit'] },
   { id: 'contact', label: 'Contact', to: ROUTES.contact, answer: 'Voici la page Contact : téléphone, e-mail et formulaire.', keywords: ['contact', 'contacter', 'telephone', 'appeler', 'numero', 'email', 'mail', 'joindre', 'ecrire', 'message', 'facebook', 'rendez'] },
@@ -27,4 +28,4 @@ export const chatbotIntents = [
 ]
 
 // Sujets proposés en boutons à l'ouverture.
-export const chatbotSuggestions = ['services', 'realisations', 'parcours', 'formation', 'contact', 'whatsapp']
+export const chatbotSuggestions = ['services', 'realisations', 'audio', 'parcours', 'formation', 'contact', 'whatsapp']
